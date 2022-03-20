@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Pokedex</title>
+</head>
+<body>
+    <img id="pokemonImg" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg">
+    <main>
+        <h1>Pokedex</h1>
+        <div class="search">
+            <label for="pokemonNo">No:</label>
+            <input id="pokemonNo" type="number" placeholder="---">
+            <input id="pokemonName" type="text" placeholder="???">
+            <button id="searchName" onclick="fetchPokemonName()"></button>
+            <button id="searchNo" onclick="fetchPokemonNo()"></button>
+        </div>
+    </main>
+    <section>
+        <h2>Data</h2>
+        <div class="columns basicData">
+            <ul>
+                <li>Type:</li>
+                <li>Height:</li>
+                <li>Weight:</li>
+            </ul>
+            <ul id="pokeGData">
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <h2>Stats</h2>
+        <div class="columns statsData">
+            <ul>
+                <li>Hp:</li>
+                <li>Attack:</li>
+                <li>Defense:</li>
+                <li>Sp-Attack:</li>
+                <li>Sp-Defense:</li>
+                <li>Speed:</li>
+            </ul>
+            <ul id="stats">
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+                <li>---</li>
+            </ul>
+        </div>
+    </section>
+    <section class="moves">
+        <h2>Moves</h2>
+        <ul id="moves" class="columns dataMoves">
+            <li>---</li>
+            <li>---</li>
+            <li>---</li>
+            <li>---</li>
+            <li>---</li>
+            <li>---</li>
+        </ul>
+    </section>
+</body>
+<footer>
+    <script type="text/javascript" src="js/poke.js"></script>
+</footer>
+</html>
