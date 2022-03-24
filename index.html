@@ -11,10 +11,14 @@
         <h1>Pokedex</h1>
         <div class="search">
             <label for="pokemonNo">No:</label>
-            <input id="pokemonNo" type="number" placeholder="---">
-            <input id="pokemonName" type="text" placeholder="???">
-            <button id="searchName" onclick="fetchPokemonName()"></button>
-            <button id="searchNo" onclick="fetchPokemonNo()"></button>
+            <input id="pokemonNo" type="number" min="1" max="898" placeholder="---">
+            <label for="pokemonName">Name:</label>
+            <input id="pokemonName" type="text" placeholder="???" readonly="readonly">
+            <label class="switchBtn">
+                <input id="searchType" type="checkbox">
+                <div id="slideText" class="slide round"></div>
+            </label>
+            <a id="search" onclick="fetchPokemonNo()"><i class="fa-solid fa-magnifying-glass"></i></a>
         </div>
     </main>
     <section>
@@ -67,5 +71,6 @@
 </body>
 <footer>
     <script type="text/javascript" src="js/poke.js"></script>
+    <script src="https://kit.fontawesome.com/79b6721f5d.js" crossorigin="anonymous"></script>
 </footer>
 </html>

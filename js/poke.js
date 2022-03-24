@@ -1,3 +1,28 @@
+
+let srhType=document.getElementById("searchType");
+document.getElementById('slideText').innerHTML='  No.';
+srhType.addEventListener('click',function (){
+    let var1=document.getElementById("search");
+    let eleNo= document.getElementById("pokemonNo");
+    let eleName= document.getElementById("pokemonName");
+   if(srhType.checked){
+       document.getElementById('slideText').innerHTML='Name';
+       if (eleName.hasAttribute('readonly')) {
+           eleName.removeAttribute('readonly');
+           eleNo.setAttribute('readonly', 'readonly');
+       }
+       var1.removeAttribute('onclick');
+       var1.setAttribute('onclick','fetchPokemonName()');
+   }else{
+       document.getElementById('slideText').innerHTML='  No.';
+       if (eleNo.hasAttribute('readonly')){
+           eleNo.removeAttribute('readonly');
+           eleName.setAttribute('readonly','readonly');
+       }
+       var1.removeAttribute('onclick');
+       var1.setAttribute('onclick','fetchPokemonNo()');
+   }
+});
 const fetchPokemonName = () => {
     const pokeNameInput = document.getElementById("pokemonName");
     let pokeName = pokeNameInput.value;
@@ -6,14 +31,16 @@ const fetchPokemonName = () => {
     fetch(url).then((res) => {
         if (res.status != "200") {
             console.log(res);
-
+            pokeImage('https://media2.giphy.com/media/pRN57fPeBvuYE/giphy.gif');
+            document.getElementById("pokeGData").innerHTML='';
+            document.getElementById("stats").innerHTML='';
+            document.getElementById("moves").innerHTML='';
         }
         else {
             return res.json();
         }
     }).then((data) => {
         if (data) {
-            console.log(data);
             let img=data.sprites.front_default;
             let generalData=[data.types[0].type.name,data.height,data.weight];
             let stats=data.stats;
@@ -34,13 +61,16 @@ const fetchPokemonNo = () => {
     fetch(url).then((res) => {
         if (res.status != "200") {
             console.log(res);
+            pokeImage('https://media2.giphy.com/media/pRN57fPeBvuYE/giphy.gif');
+            document.getElementById("pokeGData").innerHTML='';
+            document.getElementById("stats").innerHTML='';
+            document.getElementById("moves").innerHTML='';
         }
         else {
             return res.json();
         }
     }).then((data) => {
         if (data) {
-            console.log(data);
             let img=data.sprites.front_default;
             let generalData=[data.types[0].type.name,data.height,data.weight];
             let stats=data.stats;
@@ -56,8 +86,17 @@ const fetchPokemonNo = () => {
 const pokeBaseData = (name, no)=>{
     let pkName=document.getElementById("pokemonName");
     let pkNo=document.getElementById("pokemonNo");
+    if(pkName.hasAttribute('readonly')||pkNo.hasAttribute('readonly')) {
+        pkName.removeAttribute('readonly');
+        pkNo.removeAttribute('readonly');
+    }
     pkName.value=name;
     pkNo.value=no;
+    if(srhType.checked){
+        pkNo.setAttribute('readonly','readonly');
+    }else{
+        pkName.setAttribute('readonly','readonly');
+    }
 }
 const pokeImage = (url) => {
     const pokePhoto = document.getElementById("pokemonImg");
